@@ -1,0 +1,8 @@
+docker build -t yikaus/sinatra sinatra
+
+docker build -t yikaus/nginx nginx
+
+docker run -d --name sinatra yikaus/sinatra
+docker run -d --name nginx -p 80:80 --link sinatra:sinatra yikaus/nginx
+
+curl localhost:80
